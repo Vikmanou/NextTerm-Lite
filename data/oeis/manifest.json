@@ -1,1 +1,14 @@
-{}
+{
+    "core": {
+        "stripped.gz": {
+            "url": "https://oeis.org/stripped.gz",
+            "sha256": "TODO"
+        },
+        "names.gz": {
+            "url": "https://oeis.org/names.gz",
+            "sha256": "TODO"
+        }
+    },
+    "keywords": {},
+    "weights": {}
+}
