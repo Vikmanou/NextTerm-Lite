@@ -1,0 +1,3 @@
+[workspace]
+members = ["nextterm", "xtask"]
+resolver = "2"
