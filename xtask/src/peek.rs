@@ -1,10 +1,14 @@
 use anyhow::Result;
 use nextterm::oeis::load_all;
 
-pub fn run() -> Result<()> {
+pub fn run(id: u32) -> Result<()> {
     let sequences = load_all()?;
+
+    // there are gaps in OEIS ids
     for seq in &sequences {
-        println!("{}", seq.id);
+        if seq.id == id {
+            println!("Sequence: {}", seq.terms.join(", "));
+        }
     }
 
     Ok(())

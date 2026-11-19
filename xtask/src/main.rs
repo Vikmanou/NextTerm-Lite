@@ -15,14 +15,14 @@ struct Cli {
 enum Command {
     Hello,
     Fetch,
-    Peek,
+    Peek { id: u32 },
 }
 
 fn main() -> Result<()> {
     match Cli::parse().command {
         Command::Hello => println!("hello from xtask"),
         Command::Fetch => fetch::run()?,
-        Command::Peek => peek::run()?,
+        Command::Peek { id } => peek::run(id)?,
     }
     Ok(())
 }
