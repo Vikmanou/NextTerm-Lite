@@ -8,10 +8,15 @@ pub fn run() -> Result<()> {
     let path = Path::new(DATA_DIR).join("stripped.gz");
     let reader = open_gz(&path)?;
 
-    for line in reader.lines().take(10) {
+    let mut count = 0;
+    for line in reader.lines() {
         let line = line?;
-        print!("{line}");
+        if !line.starts_with("#") {
+            count += 1;
+        }
     }
+
+    println!("{count} entries");
 
     Ok(())
 }
