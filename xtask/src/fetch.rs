@@ -6,7 +6,9 @@ pub fn run() -> Result<()> {
     let files = read_manifest(Path::new(MANIFEST_PATH))?;
     for file in &files {
         let dest = Path::new(DATA_DIR).join(&file.name);
-        download(&file.url, &dest)?;
+        if !dest.exists() {
+            download(&file.url, &dest)?;
+        }
         println!("{} {}", file.name, file.url);
     }
     Ok(())
