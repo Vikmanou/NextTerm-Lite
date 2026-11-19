@@ -11,7 +11,6 @@ pub const DATA_DIR: &str = "data/oeis";
 pub struct DataFile {
     pub name: String,
     pub url: String,
-    pub sha256: String,
 }
 
 pub fn read_manifest(path: &Path) -> Result<Vec<DataFile>> {
