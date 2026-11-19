@@ -1,4 +1,5 @@
 use anyhow::Result;
+use nextterm::clean;
 use nextterm::oeis::{load_all, load_names};
 
 pub fn run(id: u32) -> Result<()> {
@@ -16,6 +17,8 @@ pub fn run(id: u32) -> Result<()> {
             );
         }
     }
+
+    clean::clean(sequences);
 
     Ok(())
 }
