@@ -1,8 +1,10 @@
 use crate::oeis::Sequence;
+use serde::{Deserialize, Serialize};
 
 const MIN_LEN: usize = 12;
 const MAX_DIGITS: usize = 30; // ODO: Figure out specific implementation of headroom
 
+#[derive(Serialize, Deserialize)]
 pub struct CleanSequence {
     pub id: u32,
     pub terms: Vec<i128>,
