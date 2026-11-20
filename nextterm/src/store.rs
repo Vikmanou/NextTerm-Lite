@@ -1,6 +1,6 @@
 use anyhow::Result;
 use std::fs::File;
-use std::io::BufWriter;
+use std::io::{BufReader, BufWriter};
 use std::path::Path;
 
 use crate::clean::CleanSequence;
@@ -15,4 +15,12 @@ pub fn save(sequences: &Vec<CleanSequence>) -> Result<()> {
     bincode::serde::encode_into_std_write(sequences, &mut file, bincode::config::standard())?;
 
     Ok(())
+}
+
+pub fn load() -> Result<Vec<CleanSequence>> {
+    let path = Path::new(PROCESSED_DIR).join("seqs.bin");
+    let mut file = BufReader::new(File::open(path)?);
+    let sequences = bincode::serde::decode_from_std_read(&mut file, bincode::config::standard())?;
+
+    Ok(sequences)
 }

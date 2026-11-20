@@ -1,18 +1,19 @@
 use anyhow::Result;
-use nextterm::oeis::{load_all, load_names};
+use nextterm::oeis::load_names;
+use nextterm::store::load;
 
 pub fn run(id: u32) -> Result<()> {
-    let sequences = load_all()?;
+    let sequences = load()?;
     let names = load_names()?;
 
     // there are gaps in OEIS ids
     for seq in &sequences {
         if seq.id == id {
             println!(
-                "Sequence (A{} - {}): {}",
+                "Sequence (A{} - {}): {:?}",
                 id,
                 names[&seq.id],
-                seq.terms.join(", ")
+                seq.terms
             );
         }
     }
