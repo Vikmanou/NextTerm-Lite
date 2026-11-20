@@ -4,6 +4,7 @@ use clap::{Parser, Subcommand};
 mod build_dataset;
 mod fetch;
 mod peek;
+mod predict;
 
 #[derive(Parser)]
 #[command(about = "NextTerm")]
@@ -18,6 +19,7 @@ enum Command {
     Fetch,
     Peek { id: u32 },
     BuildDataset,
+    Predict { terms: Vec<i128> },
 }
 
 fn main() -> Result<()> {
@@ -26,6 +28,7 @@ fn main() -> Result<()> {
         Command::Fetch => fetch::run()?,
         Command::Peek { id } => peek::run(id)?,
         Command::BuildDataset => build_dataset::run()?,
+        Command::Predict { terms } => predict::run(terms)?,
     }
     Ok(())
 }
