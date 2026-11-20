@@ -1,6 +1,7 @@
 use anyhow::Result;
 use clap::{Parser, Subcommand};
 
+mod build_dataset;
 mod fetch;
 mod peek;
 
@@ -16,6 +17,7 @@ enum Command {
     Hello,
     Fetch,
     Peek { id: u32 },
+    BuildDataset,
 }
 
 fn main() -> Result<()> {
@@ -23,6 +25,7 @@ fn main() -> Result<()> {
         Command::Hello => println!("hello from xtask"),
         Command::Fetch => fetch::run()?,
         Command::Peek { id } => peek::run(id)?,
+        Command::BuildDataset => build_dataset::run()?,
     }
     Ok(())
 }
