@@ -12,3 +12,14 @@ pub fn find(sequences: &Vec<CleanSequence>, terms: &Vec<i128>) -> Vec<(u32, i128
 
     return found;
 }
+
+pub fn predict(sequences: &Vec<CleanSequence>, terms: &Vec<i128>) -> Option<i128> {
+    let found = find(sequences, terms);
+
+    if found.is_empty() {
+        return None;
+    }
+
+    let (_id, next) = found[0];
+    return Some(next);
+}
