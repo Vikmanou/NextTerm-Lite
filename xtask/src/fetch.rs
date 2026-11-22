@@ -11,5 +11,5 @@ pub fn run() -> Result<()> {
         }
         println!("{} {}", file.name, file.url);
     }
-    Ok(())
+    return Ok(());
 }

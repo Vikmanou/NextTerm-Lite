@@ -14,7 +14,7 @@ pub fn save(sequences: &Vec<CleanSequence>) -> Result<()> {
     let mut file = BufWriter::new(File::create(path)?);
     bincode::serde::encode_into_std_write(sequences, &mut file, bincode::config::standard())?;
 
-    Ok(())
+    return Ok(());
 }
 
 pub fn load() -> Result<Vec<CleanSequence>> {
@@ -22,5 +22,5 @@ pub fn load() -> Result<Vec<CleanSequence>> {
     let mut file = BufReader::new(File::open(path)?);
     let sequences = bincode::serde::decode_from_std_read(&mut file, bincode::config::standard())?;
 
-    Ok(sequences)
+    return Ok(sequences);
 }

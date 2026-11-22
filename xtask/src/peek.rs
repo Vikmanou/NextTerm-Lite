@@ -18,5 +18,5 @@ pub fn run(id: u32) -> Result<()> {
         }
     }
 
-    Ok(())
+    return Ok(());
 }

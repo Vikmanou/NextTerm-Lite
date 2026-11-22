@@ -30,5 +30,5 @@ fn main() -> Result<()> {
         Command::BuildDataset => build_dataset::run()?,
         Command::Predict { terms } => predict::run(terms)?,
     }
-    Ok(())
+    return Ok(());
 }

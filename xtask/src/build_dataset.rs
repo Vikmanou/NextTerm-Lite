@@ -7,5 +7,5 @@ pub fn run() -> Result<()> {
     let sequences = load_all()?;
     let cleaned = clean(sequences);
     save(&cleaned)?;
-    Ok(())
+    return Ok(());
 }

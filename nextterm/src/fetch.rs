@@ -16,7 +16,7 @@ pub struct DataFile {
 pub fn read_manifest(path: &Path) -> Result<Vec<DataFile>> {
     let text = std::fs::read_to_string(path)?;
     let files = serde_json::from_str(&text)?;
-    Ok(files)
+    return Ok(files);
 }
 
 pub fn download(url: &str, dest: &Path) -> Result<()> {
@@ -29,5 +29,5 @@ pub fn download(url: &str, dest: &Path) -> Result<()> {
 
     println!("Done");
 
-    Ok(())
+    return Ok(());
 }

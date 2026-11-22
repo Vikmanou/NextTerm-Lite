@@ -15,20 +15,19 @@ pub struct Sequence {
 pub fn open_gz(path: &Path) -> Result<BufReader<GzDecoder<File>>> {
     let file = File::open(path)?;
     let unzipped = GzDecoder::new(file);
-    Ok(BufReader::new(unzipped))
+    return Ok(BufReader::new(unzipped));
 }
 
 // A000006 ,1,1,2,2,3,3,4,4,4,5,5,6,6,6,6,7,7,7,8,8,8,8,9,9,9,10,10,10,10,10,11,11,11,11,12,12,12,12,12,13,13,13,13,13,14,14,14,14,15,15,15,15,15,15,16,16,16,16,16,16,16,17,17,17,17,17,18,18,18,18,18,
 pub fn parse_line(line: &str) -> Option<Sequence> {
     let id = line[1..7].parse().ok()?;
 
-    let terms = line[8..]
-        .trim_matches(',')
-        .split(',')
-        .map(|t| t.to_string())
-        .collect();
+    let mut terms = Vec::new();
+    for term in line[8..].trim_matches(',').split(',') {
+        terms.push(term.to_string());
+    }
 
-    Some(Sequence { id, terms })
+    return Some(Sequence { id, terms });
 }
 
 pub fn load_names() -> Result<HashMap<u32, String>> {
@@ -50,7 +49,7 @@ pub fn load_names() -> Result<HashMap<u32, String>> {
         names.insert(id, name);
     }
 
-    Ok(names)
+    return Ok(names);
 }
 
 pub fn load_all() -> Result<Vec<Sequence>> {
@@ -72,5 +71,5 @@ pub fn load_all() -> Result<Vec<Sequence>> {
         }
     }
 
-    Ok(sequences)
+    return Ok(sequences);
 }
